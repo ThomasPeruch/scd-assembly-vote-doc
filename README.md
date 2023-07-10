@@ -32,3 +32,239 @@ credencias de acesso do banco de dados PostgreSQL do vote-service:<br>
 url: <i>jdbc:postgresql://localhost:5433/vote</i><br>
 usuario: <i>postgres</i><br>
 senha: <i>vote</i><br>
+
+<h3>Postman collection de ambos projetos</h3> 
+
+Para importar a collection a baixo no seu postman, siga os seguintes passos:
+- Abra o postman
+- File > Import
+- Clique em Raw Text
+- Cole o código abaixo
+- Clique em Import
+````
+{
+	"info": {
+		"_postman_id": "da6fdbfd-9924-42cd-b013-ce795c5fc9cf",
+		"name": "nt / sicredi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ASSEMBLY-SERVICE",
+			"item": [
+				{
+					"name": "SESSION",
+					"item": [
+						{
+							"name": "open topic voting session",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"topicId\":4,\n    \"sessionTimeInMinutes\":20\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/session",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"session"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "find all sessions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"topicId\":2,\n    \"sessionTimeInMinutes\":null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/session",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"session"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TOPIC",
+					"item": [
+						{
+							"name": "create topic",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"pauta 4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/topic",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"topic"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "find all topics",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"topicId\":3,\n    \"sessionTimeInMinutes\":30\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/topic",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"topic"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "VOTE-SERVICE",
+			"item": [
+				{
+					"name": "vote",
+					"item": [
+						{
+							"name": "vote",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idSession\":1,\n    \"vote\":true,\n    \"idAssociate\":1\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/vote",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"vote"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "count votes and get session result",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/vote/result/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"vote",
+										"result",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "session status",
+					"item": [
+						{
+							"name": "get all sessions status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/session-status",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"session-status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
+````
