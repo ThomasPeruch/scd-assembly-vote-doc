@@ -3,7 +3,7 @@ No cooperativismo, cada associado possui um voto e as decisões são tomadas em 
 <hr>
 <h3>A solução foi dividida da seguinte maneira:</h3>
 
-![fluxo-da-solucao](/assets/system-flow.png)
+![fluxo-da-solucao](/assets/flow-system.png)
 
 A solução foi divida em dois projetos java: o <b>assembly-service</b> e o <b>vote-service</b>.<br><br>
 Links dos projetos: <br>
